@@ -26,8 +26,8 @@ export function DocsShell({ children }: { children: ReactNode }) {
   return (
     <>
       {/* Top Navbar */}
-      <header className="sticky top-0 z-40 bg-white/80 dark:bg-[#09090B]/80 backdrop-blur-md border-b border-border">
-        <div className="max-w-[1400px] mx-auto flex items-center justify-between h-14 px-4 lg:px-6">
+      <header className="sticky top-0 z-40 bg-white/80 dark:bg-[#121212]/90 backdrop-blur-md border-b border-border dark:border-[#27272A]">
+        <div className="flex items-center justify-between h-14 px-4 lg:px-6">
           <div className="flex items-center gap-4">
             {/* Mobile menu toggle */}
             <button
@@ -61,11 +61,11 @@ export function DocsShell({ children }: { children: ReactNode }) {
           <div className="flex items-center gap-2">
             <button
               onClick={() => setSearchOpen(true)}
-              className="flex items-center gap-2 h-9 px-3 rounded-lg border border-border bg-surface-alt text-fg-muted text-sm hover:border-brand-300 transition-colors"
+              className="flex items-center gap-2 h-9 px-3 rounded-md border border-border dark:border-[#3F3F46] bg-surface-alt dark:bg-[#121212] text-fg-muted text-sm hover:bg-gray-100 dark:hover:bg-[#27272A] dark:hover:border-[#52525B] transition-colors"
             >
               <Search className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Search docs...</span>
-              <kbd className="hidden sm:inline-flex items-center gap-0.5 text-[0.625rem] font-medium text-fg-faint bg-surface-raised dark:bg-[#18181B] border border-border rounded px-1.5 py-0.5 ml-2">
+              <span className="hidden sm:inline text-fg-faint dark:text-[#52525B]">Search docs...</span>
+              <kbd className="hidden sm:inline-flex items-center gap-0.5 text-[0.625rem] font-medium text-fg-faint dark:text-[#52525B] bg-surface-raised dark:bg-[#1F1F23] border border-border dark:border-[#27272A] rounded px-1.5 py-0.5 ml-2">
                 ⌘K
               </kbd>
             </button>
@@ -73,10 +73,10 @@ export function DocsShell({ children }: { children: ReactNode }) {
             <ThemeToggle />
 
             <a
-              href="https://aurrrra.com"
+              href="https://app.aurrra.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:flex items-center gap-1.5 h-9 px-3 rounded-lg text-sm font-medium text-brand-600 dark:text-brand-300 hover:bg-brand-50 dark:hover:bg-brand-500/10 transition-colors"
+              className="hidden sm:flex items-center gap-1.5 h-9 px-3 rounded-md text-sm font-medium text-fg-muted dark:text-[#A1A1AA] hover:bg-gray-100 dark:hover:bg-[#27272A] hover:text-fg dark:hover:text-[#FAFAFA] transition-colors"
             >
               Go to App
               <ExternalLink className="w-3 h-3" />
@@ -85,9 +85,9 @@ export function DocsShell({ children }: { children: ReactNode }) {
         </div>
       </header>
 
-      <div className="max-w-[1400px] mx-auto flex min-h-[calc(100vh-3.5rem)]">
+      <div className="flex min-h-[calc(100vh-3.5rem)]">
         {/* Desktop sidebar */}
-        <aside className="hidden lg:block w-64 shrink-0 border-r border-border overflow-y-auto sticky top-14 h-[calc(100vh-3.5rem)] px-3">
+        <aside className="hidden lg:block w-64 shrink-0 border-r border-border dark:border-[#27272A] dark:bg-[#121212] overflow-y-auto sticky top-14 h-[calc(100vh-3.5rem)] px-3">
           <Sidebar />
         </aside>
 
@@ -98,7 +98,7 @@ export function DocsShell({ children }: { children: ReactNode }) {
             onClick={() => setMobileNavOpen(false)}
           >
             <div
-              className="absolute left-0 top-14 bottom-0 w-72 bg-white dark:bg-[#0F0F11] border-r border-border overflow-y-auto px-3 shadow-xl"
+              className="absolute left-0 top-14 bottom-0 w-72 bg-white dark:bg-[#121212] border-r border-border dark:border-[#27272A] overflow-y-auto px-3 shadow-xl"
               onClick={(e) => e.stopPropagation()}
             >
               <Sidebar onNavigate={() => setMobileNavOpen(false)} />
@@ -108,7 +108,7 @@ export function DocsShell({ children }: { children: ReactNode }) {
 
         {/* Main content */}
         <main className="flex-1 min-w-0 px-4 sm:px-8 lg:px-12 py-8 lg:py-10">
-          <div className="max-w-3xl">{children}</div>
+          <div className="max-w-5xl">{children}</div>
         </main>
       </div>
 

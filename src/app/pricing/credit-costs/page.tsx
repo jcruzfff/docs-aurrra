@@ -3,8 +3,9 @@ import { PageNav } from "@/components/PageNav";
 
 export default function CreditCostsPage() {
   return (
-    <div className="doc-prose">
-      <h1>Credit Costs</h1>
+    <>
+      <div className="doc-prose">
+        <h1>Credit Costs</h1>
       <p>
         A complete reference for how many credits each action in Aurrra
         consumes.
@@ -144,6 +145,7 @@ export default function CreditCostsPage() {
         </p>
       </Callout>
 
+      </div>
       <PageNav
         prev={{
           sectionId: "pricing",
@@ -158,6 +160,6 @@ export default function CreditCostsPage() {
           title: "Frequently Asked Questions",
         }}
       />
-    </div>
+    </>
   );
 }

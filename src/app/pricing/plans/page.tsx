@@ -3,8 +3,9 @@ import { PageNav } from "@/components/PageNav";
 
 export default function PlansPage() {
   return (
-    <div className="doc-prose">
-      <h1>Plan Comparison</h1>
+    <>
+      <div className="doc-prose">
+        <h1>Plan Comparison</h1>
       <p>
         Every plan includes full access to all features. Choose based on how
         many credits and projects you need.
@@ -98,6 +99,7 @@ export default function PlansPage() {
         caption="Choose your plan in Settings → Billing"
       />
 
+      </div>
       <PageNav
         prev={{
           sectionId: "settings",
@@ -112,6 +114,6 @@ export default function PlansPage() {
           title: "Credit Costs",
         }}
       />
-    </div>
+    </>
   );
 }

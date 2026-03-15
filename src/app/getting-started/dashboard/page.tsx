@@ -9,8 +9,9 @@ import { Search, PenTool, Film } from "lucide-react";
 
 export default function DashboardPage() {
   return (
-    <div className="doc-prose">
-      <h1>Dashboard Overview</h1>
+    <>
+      <div className="doc-prose">
+        <h1>Dashboard Overview</h1>
       <p className="lead">
         The dashboard is your home base in Aurrra. From here you can jump into
         any part of your content workflow — research, writing, or production.
@@ -93,6 +94,7 @@ export default function DashboardPage() {
         aspect="wide"
       />
 
+      </div>
       <PageNav
         prev={{
           sectionId: "getting-started",
@@ -107,6 +109,6 @@ export default function DashboardPage() {
           title: "Understanding Credits",
         }}
       />
-    </div>
+    </>
   );
 }

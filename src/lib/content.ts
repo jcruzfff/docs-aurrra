@@ -8,6 +8,7 @@ export interface DocPage {
 export interface DocSection {
   id: string;
   title: string;
+  standalone?: boolean;
   pages: DocPage[];
 }
 
@@ -320,6 +321,13 @@ export const sections: DocSection[] = [
           "troubleshooting",
         ],
       },
+    ],
+  },
+  {
+    id: "faq",
+    title: "",
+    standalone: true,
+    pages: [
       {
         slug: "privacy-policy",
         title: "Privacy Policy",

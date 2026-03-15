@@ -8,8 +8,9 @@ import { PageNav } from "@/components/PageNav";
 
 export default function OnboardingPage() {
   return (
-    <div className="doc-prose">
-      <h1>Onboarding</h1>
+    <>
+      <div className="doc-prose">
+        <h1>Onboarding</h1>
       <p className="lead">
         Before you dive in, Aurrra needs to learn a little about you. The
         onboarding flow takes about a minute and powers every AI feature in the
@@ -70,6 +71,7 @@ export default function OnboardingPage() {
         </p>
       </Callout>
 
+      </div>
       <PageNav
         prev={{
           sectionId: "getting-started",
@@ -84,6 +86,6 @@ export default function OnboardingPage() {
           title: "Dashboard Overview",
         }}
       />
-    </div>
+    </>
   );
 }

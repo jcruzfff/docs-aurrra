@@ -8,8 +8,9 @@ import { PageNav } from "@/components/PageNav";
 
 export default function ProfileSettingsPage() {
   return (
-    <div className="doc-prose">
-      <h1>Profile Settings</h1>
+    <>
+      <div className="doc-prose">
+        <h1>Profile Settings</h1>
       <p>
         Customize your brand identity so every AI-generated script sounds like
         you.
@@ -93,6 +94,7 @@ export default function ProfileSettingsPage() {
         </p>
       </Callout>
 
+      </div>
       <PageNav
         prev={{
           sectionId: "production",
@@ -107,6 +109,6 @@ export default function ProfileSettingsPage() {
           title: "Billing & Subscriptions",
         }}
       />
-    </div>
+    </>
   );
 }

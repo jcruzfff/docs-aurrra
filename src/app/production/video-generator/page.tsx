@@ -10,7 +10,7 @@ import { PageNav } from "@/components/PageNav";
 export default function VideoGeneratorPage() {
   return (
     <div className="doc-prose">
-      <h1>Video Generator</h1>
+        <h1>Video Generator</h1>
       <p className="lead">
         Generate AI video clips from a text prompt. Four quality tiers let you
         dial in the perfect balance between fidelity and credit cost.

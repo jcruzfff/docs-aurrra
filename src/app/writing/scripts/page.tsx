@@ -12,8 +12,9 @@ import { FileText, Video, Clapperboard } from "lucide-react";
 
 export default function ScriptsPage() {
   return (
-    <div className="doc-prose">
-      <h1>Scripts</h1>
+    <>
+      <div className="doc-prose">
+        <h1>Scripts</h1>
       <p className="lead">
         Generate research reports, YouTube scripts, and short-form scripts — all
         written in your brand voice by Aurrra's AI. Each generation costs 5
@@ -129,6 +130,7 @@ export default function ScriptsPage() {
         </p>
       </Callout>
 
+      </div>
       <PageNav
         prev={{
           sectionId: "writing",
@@ -143,6 +145,6 @@ export default function ScriptsPage() {
           title: "Voice & Avatar",
         }}
       />
-    </div>
+    </>
   );
 }

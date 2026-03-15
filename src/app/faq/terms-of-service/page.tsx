@@ -2,8 +2,9 @@ import { PageNav } from "@/components/PageNav";
 
 export default function TermsOfServicePage() {
   return (
-    <div className="doc-prose">
-      <h1>Terms of Service</h1>
+    <>
+      <div className="doc-prose">
+        <h1>Terms of Service</h1>
       <p>
         Last updated: March 2026
       </p>
@@ -173,6 +174,7 @@ export default function TermsOfServicePage() {
         <strong>support@aurrrra.com</strong>.
       </p>
 
+      </div>
       <PageNav
         prev={{
           sectionId: "faq",
@@ -182,6 +184,6 @@ export default function TermsOfServicePage() {
         }}
         next={null}
       />
-    </div>
+    </>
   );
 }

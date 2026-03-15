@@ -8,8 +8,9 @@ import { PageNav } from "@/components/PageNav";
 
 export default function ApiCredentialsPage() {
   return (
-    <div className="doc-prose">
-      <h1>API Credentials</h1>
+    <>
+      <div className="doc-prose">
+        <h1>API Credentials</h1>
       <p>
         Connect your ElevenLabs and HeyGen accounts to unlock voice cloning and
         AI avatar features.
@@ -108,6 +109,7 @@ export default function ApiCredentialsPage() {
         </p>
       </Callout>
 
+      </div>
       <PageNav
         prev={{
           sectionId: "settings",
@@ -122,6 +124,6 @@ export default function ApiCredentialsPage() {
           title: "Plan Comparison",
         }}
       />
-    </div>
+    </>
   );
 }

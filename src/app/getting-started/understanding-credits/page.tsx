@@ -7,8 +7,9 @@ import { PageNav } from "@/components/PageNav";
 
 export default function UnderstandingCreditsPage() {
   return (
-    <div className="doc-prose">
-      <h1>Understanding Credits</h1>
+    <>
+      <div className="doc-prose">
+        <h1>Understanding Credits</h1>
       <p className="lead">
         Credits are the currency that powers AI features in Aurrra. Every plan
         includes a monthly credit allowance, and different actions cost different
@@ -92,6 +93,7 @@ export default function UnderstandingCreditsPage() {
         </p>
       </Callout>
 
+      </div>
       <PageNav
         prev={{
           sectionId: "getting-started",
@@ -106,6 +108,6 @@ export default function UnderstandingCreditsPage() {
           title: "YouTube Research",
         }}
       />
-    </div>
+    </>
   );
 }

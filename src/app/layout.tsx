@@ -40,7 +40,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="bg-white dark:bg-[#09090B] text-fg font-body antialiased transition-colors">
+      <body className="bg-white dark:bg-[#121212] text-fg dark:text-[#FAFAFA] font-body antialiased transition-colors">
         <ThemeProvider>
           <ScrollToTop />
           <DocsShell>{children}</DocsShell>

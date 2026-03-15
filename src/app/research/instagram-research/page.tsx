@@ -9,7 +9,7 @@ import { PageNav } from "@/components/PageNav";
 export default function InstagramResearch() {
   return (
     <div className="doc-prose">
-      <h1>Instagram Research</h1>
+        <h1>Instagram Research</h1>
       <p>
         Aurrra&apos;s Instagram research gives you access to creator profiles,
         posts, and Reels across the platform. Use it to study what&apos;s

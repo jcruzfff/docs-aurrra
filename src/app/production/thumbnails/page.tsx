@@ -10,7 +10,7 @@ import { PageNav } from "@/components/PageNav";
 export default function ThumbnailsPage() {
   return (
     <div className="doc-prose">
-      <h1>Thumbnails</h1>
+        <h1>Thumbnails</h1>
       <p className="lead">
         Generate eye-catching YouTube thumbnails with AI — from a video URL or
         your own reference photos — and iterate until you land on the perfect

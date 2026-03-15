@@ -12,7 +12,7 @@ import { Mic, Video } from "lucide-react";
 export default function VoiceAvatarPage() {
   return (
     <div className="doc-prose">
-      <h1>Voice & Avatar</h1>
+        <h1>Voice & Avatar</h1>
       <p className="lead">
         Turn any script into a realistic voiceover — or a full AI avatar
         video — using ElevenLabs voice cloning and HeyGen digital avatars.

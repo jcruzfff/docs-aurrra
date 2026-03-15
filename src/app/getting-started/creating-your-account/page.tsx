@@ -8,8 +8,9 @@ import { PageNav } from "@/components/PageNav";
 
 export default function CreatingYourAccountPage() {
   return (
-    <div className="doc-prose">
-      <h1>Creating Your Account</h1>
+    <>
+      <div className="doc-prose">
+        <h1>Creating Your Account</h1>
       <p className="lead">
         Get up and running with Aurrra in under two minutes. All you need is an
         email address.
@@ -83,6 +84,7 @@ export default function CreatingYourAccountPage() {
         </p>
       </Callout>
 
+      </div>
       <PageNav
         prev={{
           sectionId: "getting-started",
@@ -97,6 +99,6 @@ export default function CreatingYourAccountPage() {
           title: "Onboarding",
         }}
       />
-    </div>
+    </>
   );
 }

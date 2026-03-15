@@ -16,8 +16,9 @@ import {
 
 export default function VaultPage() {
   return (
-    <div className="doc-prose">
-      <h1>The Vault</h1>
+    <>
+      <div className="doc-prose">
+        <h1>The Vault</h1>
       <p className="lead">
         A curated library of proven content patterns — hooks, titles, captions,
         structures, styles, and frameworks — extracted from top-performing videos
@@ -124,6 +125,7 @@ export default function VaultPage() {
         </p>
       </Callout>
 
+      </div>
       <PageNav
         prev={{
           sectionId: "research",
@@ -138,6 +140,6 @@ export default function VaultPage() {
           title: "Scripts",
         }}
       />
-    </div>
+    </>
   );
 }

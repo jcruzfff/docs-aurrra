@@ -10,7 +10,7 @@ import { PageNav } from "@/components/PageNav";
 export default function ImageGeneratorPage() {
   return (
     <div className="doc-prose">
-      <h1>Image Generator</h1>
+        <h1>Image Generator</h1>
       <p className="lead">
         Generate stunning AI images from a text prompt — choose between
         Standard and Pro quality depending on how polished you need the

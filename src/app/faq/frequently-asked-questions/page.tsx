@@ -102,8 +102,9 @@ function FaqAccordion({ item }: { item: FaqItem }) {
 
 export default function FaqPage() {
   return (
-    <div className="doc-prose">
-      <h1>Frequently Asked Questions</h1>
+    <>
+      <div className="doc-prose">
+        <h1>Frequently Asked Questions</h1>
       <p>Quick answers to the most common questions about Aurrra.</p>
 
       <div className="space-y-3 my-6 not-prose">
@@ -120,6 +121,7 @@ export default function FaqPage() {
         </p>
       </Callout>
 
+      </div>
       <PageNav
         prev={{
           sectionId: "pricing",
@@ -134,6 +136,6 @@ export default function FaqPage() {
           title: "Privacy Policy",
         }}
       />
-    </div>
+    </>
   );
 }

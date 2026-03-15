@@ -8,8 +8,9 @@ import { PageNav } from "@/components/PageNav";
 
 export default function BillingPage() {
   return (
-    <div className="doc-prose">
-      <h1>Billing &amp; Subscriptions</h1>
+    <>
+      <div className="doc-prose">
+        <h1>Billing &amp; Subscriptions</h1>
       <p>
         Manage your plan, monitor credit usage, purchase top-ups, and control
         your subscription.
@@ -135,6 +136,7 @@ export default function BillingPage() {
         caption="Payment portal for subscription management"
       />
 
+      </div>
       <PageNav
         prev={{
           sectionId: "settings",
@@ -149,6 +151,6 @@ export default function BillingPage() {
           title: "API Credentials",
         }}
       />
-    </div>
+    </>
   );
 }

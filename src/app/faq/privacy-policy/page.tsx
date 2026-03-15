@@ -2,8 +2,9 @@ import { PageNav } from "@/components/PageNav";
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="doc-prose">
-      <h1>Privacy Policy</h1>
+    <>
+      <div className="doc-prose">
+        <h1>Privacy Policy</h1>
       <p>
         Last updated: March 2026
       </p>
@@ -145,6 +146,7 @@ export default function PrivacyPolicyPage() {
         us at <strong>support@aurrrra.com</strong>.
       </p>
 
+      </div>
       <PageNav
         prev={{
           sectionId: "faq",
@@ -159,6 +161,6 @@ export default function PrivacyPolicyPage() {
           title: "Terms of Service",
         }}
       />
-    </div>
+    </>
   );
 }

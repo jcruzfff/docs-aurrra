@@ -9,7 +9,7 @@ import { PageNav } from "@/components/PageNav";
 export default function Collections() {
   return (
     <div className="doc-prose">
-      <h1>Collections</h1>
+        <h1>Collections</h1>
       <p>
         Collections are your personal library of saved videos and posts. Think
         of them as mood boards for content — curate the best examples

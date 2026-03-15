@@ -9,7 +9,7 @@ import { PageNav } from "@/components/PageNav";
 export default function Watchlists() {
   return (
     <div className="doc-prose">
-      <h1>Watchlists</h1>
+        <h1>Watchlists</h1>
       <p>
         Watchlists let you track your favorite creators across platforms in one
         place. Add YouTube channels or Instagram profiles to a watchlist and

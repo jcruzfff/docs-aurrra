@@ -44,18 +44,18 @@ export function SearchModal({
       onClick={onClose}
     >
       <div
-        className="w-full max-w-xl bg-white dark:bg-[#18181B] rounded-2xl shadow-2xl overflow-hidden border border-border animate-in fade-in slide-in-from-top-4 duration-200"
+        className="w-full max-w-xl bg-white dark:bg-[#121212] rounded-2xl shadow-2xl overflow-hidden border border-border dark:border-[#27272A] animate-in fade-in slide-in-from-top-4 duration-200"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="relative border-b border-border">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-fg-muted" />
+        <div className="relative border-b border-border dark:border-[#27272A]">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-fg-muted dark:text-[#A1A1AA]" />
           <input
             type="text"
             value={query}
             onChange={(e) => handleSearch(e.target.value)}
             placeholder="Search docs..."
             autoFocus
-            className="w-full h-14 pl-12 pr-12 bg-transparent text-fg placeholder:text-fg-faint text-[0.9375rem] focus:outline-none font-body"
+            className="w-full h-14 pl-12 pr-12 bg-transparent text-fg dark:text-[#FAFAFA] placeholder:text-fg-faint dark:placeholder:text-[#52525B] text-[0.9375rem] focus:outline-none font-body"
           />
           <button
             onClick={onClose}
@@ -111,7 +111,7 @@ export function SearchModal({
 
         {query && results.length > 0 && (
           <div className="max-h-[400px] overflow-y-auto">
-            <div className="px-5 py-2.5 border-b border-border bg-surface-alt">
+            <div className="px-5 py-2.5 border-b border-border dark:border-[#27272A] bg-surface-alt dark:bg-[#0F0F11]">
               <p className="text-xs font-semibold uppercase tracking-wider text-fg-faint">
                 {results.length} result{results.length !== 1 && "s"}
               </p>
@@ -121,7 +121,7 @@ export function SearchModal({
                 key={i}
                 href={`/${r.sectionId}/${r.slug}`}
                 onClick={onClose}
-                className="flex items-start gap-3 px-5 py-3.5 hover:bg-brand-50/50 transition-colors border-b border-border/50 last:border-0 group"
+                className="flex items-start gap-3 px-5 py-3.5 hover:bg-brand-50/50 dark:hover:bg-[rgba(167,139,250,0.1)] transition-colors border-b border-border/50 dark:border-[#1F1F23] last:border-0 group"
               >
                 <div className="w-7 h-7 rounded-md bg-brand-50 group-hover:bg-brand-100 flex items-center justify-center shrink-0 mt-0.5 transition-colors">
                   <span className="text-brand-500 text-xs font-bold">#</span>

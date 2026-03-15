@@ -32,7 +32,33 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
 
   return (
     <nav className="py-4 space-y-1">
-      {sections.map((section) => {
+      {sections.map((section, sectionIdx) => {
+        if (section.standalone) {
+          return (
+            <div key={`standalone-${sectionIdx}`} className="space-y-0.5">
+              {section.pages.map((page) => {
+                const href = `/${section.id}/${page.slug}`;
+                const isActive = pathname === href;
+
+                return (
+                  <Link
+                    key={page.slug}
+                    href={href}
+                    onClick={onNavigate}
+                    className={`block px-3 py-2 rounded-lg text-[0.8125rem] font-semibold transition-colors ${
+                      isActive
+                        ? "text-brand-600 dark:text-[#F4F4F5]"
+                        : "text-fg dark:text-[#FAFAFA] hover:bg-surface-alt dark:hover:bg-[#27272A]"
+                    }`}
+                  >
+                    {page.title}
+                  </Link>
+                );
+              })}
+            </div>
+          );
+        }
+
         const isExpanded = expanded.has(section.id);
         const hasActivePage = section.pages.some(
           (p) => pathname === `/${section.id}/${p.slug}`
@@ -44,20 +70,20 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
               onClick={() => toggle(section.id)}
               className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-left text-[0.8125rem] font-semibold transition-colors ${
                 hasActivePage
-                  ? "text-brand-600"
-                  : "text-fg hover:bg-surface-alt"
+                  ? "text-brand-600 dark:text-[#F4F4F5]"
+                  : "text-fg dark:text-[#FAFAFA] hover:bg-surface-alt dark:hover:bg-[#27272A]"
               }`}
             >
               <span className="flex-1">{section.title}</span>
               <ChevronDown
-                className={`w-3.5 h-3.5 text-fg-faint transition-transform duration-200 ${
+                className={`w-3.5 h-3.5 text-fg-faint dark:text-[#52525B] transition-transform duration-200 ${
                   isExpanded ? "rotate-0" : "-rotate-90"
                 }`}
               />
             </button>
 
             {isExpanded && (
-              <div className="ml-[1.125rem] pl-3 border-l border-border space-y-0.5 mt-0.5 mb-2">
+              <div className="ml-[1.125rem] pl-3 border-l border-border dark:border-[#27272A] space-y-0.5 mt-0.5 mb-2">
                 {section.pages.map((page) => {
                   const href = `/${section.id}/${page.slug}`;
                   const isActive = pathname === href;
@@ -69,8 +95,8 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
                       onClick={onNavigate}
                       className={`block px-3 py-1.5 rounded-md text-[0.8125rem] transition-colors ${
                         isActive
-                          ? "text-brand-600 bg-brand-50 font-medium"
-                          : "text-fg-muted hover:text-fg hover:bg-surface-alt"
+                          ? "text-brand-600 dark:text-[#F4F4F5] bg-brand-50 dark:bg-[#27272A] font-medium"
+                          : "text-fg-muted dark:text-[#A1A1AA] hover:text-fg dark:hover:text-[#FAFAFA] hover:bg-surface-alt dark:hover:bg-[#27272A]"
                       }`}
                     >
                       {page.title}

@@ -10,7 +10,7 @@ import { PageNav } from "@/components/PageNav";
 export default function YouTubeResearch() {
   return (
     <div className="doc-prose">
-      <h1>YouTube Research</h1>
+        <h1>YouTube Research</h1>
       <p>
         Aurrra gives you a powerful YouTube research engine. Search for viral
         videos, spot outliers in any niche, and deep-dive into channels — all

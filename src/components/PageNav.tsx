@@ -17,40 +17,49 @@ export function PageNav({
   prev: NavLink | null;
   next: NavLink | null;
 }) {
+  const active = next ?? prev;
+  const activeHref = active
+    ? `/${active.sectionId}/${active.slug}`
+    : "#";
+
   return (
-    <div className="flex items-stretch gap-3 mt-12 pt-8 border-t border-border">
-      {prev ? (
+    <nav className="page-nav not-prose mt-16 max-w-[550px] mx-auto rounded-2xl bg-gray-100 dark:bg-[#1F1F23] p-1">
+      <div className="flex w-full items-center">
+        {prev ? (
+          <Link
+            href={`/${prev.sectionId}/${prev.slug}`}
+            className="flex items-center gap-1 px-3 text-[13px] font-medium tracking-wide text-fg-muted dark:text-[#71717A] hover:text-fg dark:hover:text-[#FAFAFA] transition-colors shrink-0"
+          >
+            <ChevronLeft className="w-3.5 h-3.5 shrink-0" />
+            <span className="hidden md:block">Previous</span>
+          </Link>
+        ) : (
+          <div className="w-20 shrink-0" />
+        )}
+
         <Link
-          href={`/${prev.sectionId}/${prev.slug}`}
-          className="flex-1 group flex items-center gap-3 p-4 rounded-xl border border-border hover:border-brand-300 hover:bg-brand-50/30 transition-all"
+          href={activeHref}
+          className="group flex w-full items-center gap-3 overflow-hidden rounded-xl border border-border dark:border-[#27272A] bg-white dark:bg-[#121212] px-3 py-2.5 transition-colors hover:border-brand-400 dark:hover:border-[#A78BFA]"
         >
-          <ChevronLeft className="w-4 h-4 text-fg-faint group-hover:text-brand-500 transition-colors shrink-0" />
-          <div className="text-right flex-1">
-            <p className="text-xs text-fg-faint">{prev.sectionTitle}</p>
-            <p className="text-sm font-medium text-fg group-hover:text-brand-600 transition-colors">
-              {prev.title}
+          <div className="flex min-w-0 flex-1 flex-col text-right gap-[2px]">
+            <p className="truncate text-[14px] font-semibold tracking-wide text-fg dark:text-[#FAFAFA]">
+              {active?.title}
+            </p>
+            <p className="truncate text-[12px] tracking-wide text-fg-muted dark:text-[#71717A]">
+              {active?.sectionTitle}
             </p>
           </div>
+
+          <div className="hidden md:block h-5 w-px bg-gray-300 dark:bg-[#3F3F46] shrink-0" />
+
+          {next && (
+            <div className="flex items-center gap-1 text-[13px] font-medium tracking-wide text-fg-muted dark:text-[#71717A] shrink-0">
+              <ChevronRight className="w-3.5 h-3.5 shrink-0" />
+              <p className="hidden md:block">Next</p>
+            </div>
+          )}
         </Link>
-      ) : (
-        <div className="flex-1" />
-      )}
-      {next ? (
-        <Link
-          href={`/${next.sectionId}/${next.slug}`}
-          className="flex-1 group flex items-center gap-3 p-4 rounded-xl border border-border hover:border-brand-300 hover:bg-brand-50/30 transition-all"
-        >
-          <div className="flex-1">
-            <p className="text-xs text-fg-faint">{next.sectionTitle}</p>
-            <p className="text-sm font-medium text-fg group-hover:text-brand-600 transition-colors">
-              {next.title}
-            </p>
-          </div>
-          <ChevronRight className="w-4 h-4 text-fg-faint group-hover:text-brand-500 transition-colors shrink-0" />
-        </Link>
-      ) : (
-        <div className="flex-1" />
-      )}
-    </div>
+      </div>
+    </nav>
   );
 }

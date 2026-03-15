@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode } from "react";
+import { ReactNode, useRef, useState, useCallback } from "react";
 import {
   Info,
   Lightbulb,
@@ -20,27 +20,27 @@ const calloutConfig: Record<
 > = {
   info: {
     icon: <Info className="w-4 h-4" />,
-    bg: "bg-blue-50 dark:bg-blue-500/10",
-    border: "border-blue-200 dark:border-blue-500/20",
-    iconColor: "text-blue-500 dark:text-blue-400",
+    bg: "bg-blue-50 dark:bg-[rgba(59,130,246,0.1)]",
+    border: "border-blue-200 dark:border-l-[3px] dark:border-[rgba(59,130,246,0.3)]",
+    iconColor: "text-blue-500 dark:text-[#3B82F6]",
   },
   tip: {
     icon: <Lightbulb className="w-4 h-4" />,
-    bg: "bg-brand-50",
-    border: "border-brand-200",
-    iconColor: "text-brand-500",
+    bg: "bg-brand-50 dark:bg-[rgba(167,139,250,0.1)]",
+    border: "border-brand-200 dark:border-[rgba(167,139,250,0.3)]",
+    iconColor: "text-brand-500 dark:text-[#A78BFA]",
   },
   warning: {
     icon: <AlertTriangle className="w-4 h-4" />,
-    bg: "bg-amber-50 dark:bg-amber-500/10",
-    border: "border-amber-200 dark:border-amber-500/20",
-    iconColor: "text-amber-500 dark:text-amber-400",
+    bg: "bg-amber-50 dark:bg-[rgba(234,179,8,0.1)]",
+    border: "border-amber-200 dark:border-l-[3px] dark:border-[rgba(234,179,8,0.3)]",
+    iconColor: "text-amber-500 dark:text-[#EAB308]",
   },
   note: {
     icon: <Zap className="w-4 h-4" />,
-    bg: "bg-gray-50 dark:bg-[#1F1F23]",
+    bg: "bg-gray-50 dark:bg-[#121212]",
     border: "border-gray-200 dark:border-[#27272A]",
-    iconColor: "text-gray-500 dark:text-gray-400",
+    iconColor: "text-gray-500 dark:text-[#A1A1AA]",
   },
 };
 
@@ -66,7 +66,7 @@ export function Callout({
               {title}
             </p>
           )}
-          <div className="text-[0.875rem] text-gray-600 dark:text-[#A1A1AA] leading-relaxed [&>p]:mb-0">
+          <div className="text-[0.875rem] text-gray-600 dark:text-[#F4F4F5] leading-relaxed [&>p]:mb-0">
             {children}
           </div>
         </div>
@@ -104,7 +104,7 @@ export function Step({
         <h4 className="text-fg font-semibold text-[0.9375rem] mb-2 font-sans">
           {title}
         </h4>
-        <div className="text-gray-500 dark:text-[#71717A] text-[0.875rem] leading-relaxed [&>p]:mb-2">
+        <div className="text-gray-500 dark:text-[#A1A1AA] text-[0.875rem] leading-relaxed [&>p]:mb-2">
           {children}
         </div>
       </div>
@@ -153,7 +153,7 @@ export function ImageZone({
 
 export function CardGrid({ children }: { children: ReactNode }) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6 not-prose">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 my-6 not-prose">
       {children}
     </div>
   );
@@ -170,30 +170,54 @@ export function FeatureCard({
   href?: string;
   icon?: ReactNode;
 }) {
+  const cardRef = useRef<HTMLElement>(null);
+  const [glowPos, setGlowPos] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    const rect = cardRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    setGlowPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  }, []);
+
   const Wrapper = href ? "a" : "div";
+
   return (
     <Wrapper
+      ref={cardRef as React.Ref<HTMLAnchorElement & HTMLDivElement>}
       {...(href ? { href } : {})}
-      className={`group block rounded-2xl border border-border/80 bg-white dark:bg-[#18181B] p-5 transition-all duration-200 ${
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className={`group relative block h-full overflow-hidden rounded-xl border border-border/80 dark:border-[#27272A] bg-white dark:bg-[#121212] p-3.5 transition-all duration-200 ${
         href
-          ? "hover:border-brand-200 hover:shadow-[0_4px_20px_rgba(138,49,255,0.06)] dark:hover:shadow-none cursor-pointer"
+          ? "hover:border-brand-200 hover:shadow-[0_4px_20px_rgba(138,49,255,0.06)] dark:hover:shadow-none dark:hover:border-[#3F3F46] cursor-pointer"
           : ""
       }`}
     >
-      {icon && (
-        <div className="w-8 h-8 rounded-lg bg-brand-50 flex items-center justify-center text-brand-500 mb-3 group-hover:bg-brand-100 transition-colors">
-          {icon}
-        </div>
-      )}
-      <h3 className="text-fg font-semibold text-[0.875rem] font-sans leading-snug mb-1.5 flex items-center gap-1">
-        {title}
-        {href && (
-          <ChevronRight className="w-3 h-3 text-fg-faint opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 group-hover:text-brand-500 transition-all duration-200" />
+      <div
+        className="pointer-events-none absolute inset-0 z-0 rounded-xl transition-opacity duration-300"
+        style={{
+          opacity: isHovered ? 1 : 0,
+          background: `radial-gradient(250px circle at ${glowPos.x}px ${glowPos.y}px, rgba(138,49,255,0.08), transparent 70%)`,
+        }}
+      />
+      <div className="relative z-10">
+        {icon && (
+          <div className="w-8 h-8 rounded-lg bg-brand-50 flex items-center justify-center text-brand-500 mb-2.5 group-hover:bg-brand-100 transition-colors [&>svg]:w-4 [&>svg]:h-4">
+            {icon}
+          </div>
         )}
-      </h3>
-      <p className="text-fg-muted text-[0.8125rem] leading-relaxed">
-        {description}
-      </p>
+        <h3 className="text-fg font-semibold text-[0.75rem] font-sans leading-snug mb-1 flex items-center gap-1">
+          {title}
+          {href && (
+            <ChevronRight className="w-2.5 h-2.5 text-fg-faint opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 group-hover:text-brand-500 transition-all duration-200" />
+          )}
+        </h3>
+        <p style={{ fontSize: '0.75rem', lineHeight: '1.5', color: 'var(--card-desc-color)' }} className="m-0">
+          {description}
+        </p>
+      </div>
     </Wrapper>
   );
 }
@@ -260,8 +284,8 @@ export function PlanCard({
     <div
       className={`rounded-2xl border p-6 ${
         highlighted
-          ? "border-brand-500 ring-2 ring-brand-100 bg-white dark:bg-[#18181B]"
-          : "border-border bg-white dark:bg-[#18181B]"
+          ? "border-brand-500 ring-2 ring-brand-100 bg-white dark:bg-[#121212]"
+          : "border-border dark:border-[#27272A] bg-white dark:bg-[#121212]"
       }`}
     >
       {highlighted && (
@@ -277,7 +301,7 @@ export function PlanCard({
       <p className="text-xs text-fg-muted mt-1">
         or {annualPrice}/mo billed annually
       </p>
-      <div className="mt-4 space-y-1 text-sm text-gray-600 dark:text-[#A1A1AA]">
+      <div className="mt-4 space-y-1 text-sm text-gray-600 dark:text-[#F4F4F5]">
         <p>
           <strong className="text-fg">{credits}</strong> credits/month
         </p>
@@ -287,7 +311,7 @@ export function PlanCard({
       </div>
       <ul className="mt-4 space-y-2">
         {features.map((f, i) => (
-          <li key={i} className="flex items-start gap-2 text-sm text-gray-600 dark:text-[#A1A1AA]">
+          <li key={i} className="flex items-start gap-2 text-sm text-gray-600 dark:text-[#F4F4F5]">
             <svg
               className="w-4 h-4 text-success mt-0.5 shrink-0"
               fill="none"
@@ -313,7 +337,7 @@ export function PlanCard({
 
 export function Kbd({ children }: { children: ReactNode }) {
   return (
-    <kbd className="inline-flex items-center px-1.5 py-0.5 text-xs font-medium text-fg-muted bg-gray-100 dark:bg-[#1F1F23] border border-gray-200 dark:border-[#27272A] rounded">
+    <kbd className="inline-flex items-center px-1.5 py-0.5 text-xs font-medium text-fg-muted dark:text-[#A1A1AA] bg-gray-100 dark:bg-[#1F1F23] border border-gray-200 dark:border-[#27272A] rounded">
       {children}
     </kbd>
   );

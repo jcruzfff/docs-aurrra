@@ -22,8 +22,9 @@ import {
 
 export default function WelcomePage() {
   return (
-    <div className="doc-prose">
-      <h1>Welcome to the Docs</h1>
+    <>
+      <div className="doc-prose">
+        <h1>Welcome to the Docs</h1>
       <p>
         Everything you need to get the most out of Aurrra — your AI-powered
         content engine for researching, writing, and producing video content.
@@ -38,15 +39,9 @@ export default function WelcomePage() {
       <CardGrid>
         <FeatureCard
           icon={<Search className="w-4 h-4" />}
-          title="YouTube Research"
-          description="Search millions of videos, spot outliers, and analyze what's going viral in any niche."
+          title="Research"
+          description="Search millions of videos and posts, spot outliers, and analyze what's going viral."
           href="/research/youtube-research"
-        />
-        <FeatureCard
-          icon={<BarChart3 className="w-4 h-4" />}
-          title="Instagram Research"
-          description="Explore creators, posts, and Reels to find trending content patterns on Instagram."
-          href="/research/instagram-research"
         />
         <FeatureCard
           icon={<Eye className="w-4 h-4" />}
@@ -119,13 +114,7 @@ export default function WelcomePage() {
         />
       </CardGrid>
 
-      <Callout variant="tip" title="Quick navigation">
-        <p>
-          Press <Kbd>⌘ K</Kbd> anywhere in the docs to open search and jump to
-          any page instantly.
-        </p>
-      </Callout>
-
+      </div>
       <PageNav
         prev={null}
         next={{
@@ -135,6 +124,6 @@ export default function WelcomePage() {
           title: "Creating Your Account",
         }}
       />
-    </div>
+    </>
   );
 }
