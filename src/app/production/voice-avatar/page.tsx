@@ -3,8 +3,8 @@ import {
   ImageZone,
   Steps,
   Step,
-  CardGrid,
-  FeatureCard,
+  InfoList,
+  InfoItem,
 } from "@/components/DocComponents";
 import { PageNav } from "@/components/PageNav";
 import { Mic, Video } from "lucide-react";
@@ -30,18 +30,18 @@ export default function VoiceAvatarPage() {
         avatar video with lip-synced speech.
       </p>
 
-      <CardGrid>
-        <FeatureCard
+      <InfoList>
+        <InfoItem
           icon={<Mic className="w-5 h-5" />}
           title="Voice-Only"
           description="Generate a high-fidelity voiceover from your script using your cloned ElevenLabs voice. Perfect for podcasts, narration, and audio layers."
         />
-        <FeatureCard
+        <InfoItem
           icon={<Video className="w-5 h-5" />}
           title="Voice + Avatar"
           description="Pair your cloned voice with a HeyGen AI avatar for a fully produced talking-head video — no camera required."
         />
-      </CardGrid>
+      </InfoList>
 
       <h2>Getting started</h2>
 

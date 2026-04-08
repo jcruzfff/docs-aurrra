@@ -109,6 +109,12 @@ export function DocsShell({ children }: { children: ReactNode }) {
         {/* Main content */}
         <main className="flex-1 min-w-0 px-4 sm:px-8 lg:px-12 py-8 lg:py-10">
           <div className="max-w-5xl">{children}</div>
+
+          <footer className="max-w-5xl mt-16 pt-6 border-t border-border dark:border-[#1F1F23]">
+            <p className="text-xs text-fg-faint dark:text-[#52525B]">
+              &copy; {new Date().getFullYear()} Aurrra. All rights reserved.
+            </p>
+          </footer>
         </main>
       </div>
 

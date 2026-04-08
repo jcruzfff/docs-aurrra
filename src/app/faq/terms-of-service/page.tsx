@@ -118,6 +118,43 @@ export default function TermsOfServicePage() {
         distributing it.
       </p>
 
+      <h2>License to Use the Service</h2>
+      <p>
+        Subject to your compliance with these Terms, Aurrra grants you a
+        limited, non-exclusive, non-transferable, revocable license to access
+        and use the Service solely for your personal or internal business
+        purposes. This license does not include the right to:
+      </p>
+      <ul>
+        <li>Copy, modify, or create derivative works of the Service, its software, or any part thereof</li>
+        <li>Reverse engineer, decompile, disassemble, or otherwise attempt to discover the source code or underlying algorithms of the Service</li>
+        <li>Scrape, crawl, or use automated means to extract data from the Service beyond normal intended usage</li>
+        <li>Resell, sublicense, redistribute, or provide access to the Service to any third party</li>
+        <li>Use the Service to build a competing product or service</li>
+        <li>Remove, alter, or obscure any copyright, trademark, or proprietary notices</li>
+      </ul>
+      <p>
+        This license is effective until terminated. We may terminate this
+        license at any time if you breach these Terms. Upon termination, you
+        must cease all use of the Service and destroy any copies of materials
+        obtained from it.
+      </p>
+
+      <h2>Proprietary Rights</h2>
+      <p>
+        All rights, title, and interest in and to the Service — including all
+        software, code, designs, algorithms, interfaces, documentation, data
+        models, trademarks, and other intellectual property — are and shall
+        remain the exclusive property of Aurrra. Nothing in these Terms grants
+        you any ownership interest in the Service.
+      </p>
+      <p>
+        The Service is protected by copyright, trade secret, and other
+        intellectual property laws. Unauthorized use may result in civil and
+        criminal penalties. Aurrra reserves all rights not expressly granted in
+        these Terms.
+      </p>
+
       <h2>Third-Party Integrations</h2>
       <p>
         Aurrra allows you to connect third-party services (such as ElevenLabs
@@ -171,7 +208,7 @@ export default function TermsOfServicePage() {
       <h2>Contact Us</h2>
       <p>
         If you have questions about these Terms, contact us at{" "}
-        <strong>support@aurrrra.com</strong>.
+        <strong>admin@aurra.com</strong>.
       </p>
 
       </div>

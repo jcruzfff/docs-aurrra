@@ -95,7 +95,7 @@ export function Step({
   return (
     <div className="flex gap-4">
       <div className="flex flex-col items-center">
-        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-brand-400 to-brand-600 flex items-center justify-center shrink-0">
+        <div className="w-8 h-8 rounded-full bg-linear-to-br from-brand-400 to-brand-600 flex items-center justify-center shrink-0">
           <span className="text-sm font-semibold text-white">{number}</span>
         </div>
         {!last && <div className="w-0.5 flex-1 bg-brand-100 mt-2" />}
@@ -167,10 +167,10 @@ export function FeatureCard({
 }: {
   title: string;
   description: string;
-  href?: string;
+  href: string;
   icon?: ReactNode;
 }) {
-  const cardRef = useRef<HTMLElement>(null);
+  const cardRef = useRef<HTMLAnchorElement>(null);
   const [glowPos, setGlowPos] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
 
@@ -180,20 +180,14 @@ export function FeatureCard({
     setGlowPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
   }, []);
 
-  const Wrapper = href ? "a" : "div";
-
   return (
-    <Wrapper
-      ref={cardRef as React.Ref<HTMLAnchorElement & HTMLDivElement>}
-      {...(href ? { href } : {})}
+    <a
+      ref={cardRef}
+      href={href}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`group relative block h-full overflow-hidden rounded-xl border border-border/80 dark:border-[#27272A] bg-white dark:bg-[#121212] p-3.5 transition-all duration-200 ${
-        href
-          ? "hover:border-brand-200 hover:shadow-[0_4px_20px_rgba(138,49,255,0.06)] dark:hover:shadow-none dark:hover:border-[#3F3F46] cursor-pointer"
-          : ""
-      }`}
+      className="group relative block h-full overflow-hidden rounded-xl border border-border/80 dark:border-[#27272A] bg-white dark:bg-[#121212] p-3.5 transition-all duration-200 hover:border-brand-200 hover:shadow-[0_4px_20px_rgba(138,49,255,0.06)] dark:hover:shadow-none dark:hover:border-[#3F3F46] cursor-pointer"
     >
       <div
         className="pointer-events-none absolute inset-0 z-0 rounded-xl transition-opacity duration-300"
@@ -210,15 +204,43 @@ export function FeatureCard({
         )}
         <h3 className="text-fg font-semibold text-[0.75rem] font-sans leading-snug mb-1 flex items-center gap-1">
           {title}
-          {href && (
-            <ChevronRight className="w-2.5 h-2.5 text-fg-faint opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 group-hover:text-brand-500 transition-all duration-200" />
-          )}
+          <ChevronRight className="w-2.5 h-2.5 text-fg-faint opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 group-hover:text-brand-500 transition-all duration-200" />
         </h3>
         <p style={{ fontSize: '0.75rem', lineHeight: '1.5', color: 'var(--card-desc-color)' }} className="m-0">
           {description}
         </p>
       </div>
-    </Wrapper>
+    </a>
+  );
+}
+
+/* ── Info Sections (prominent non-interactive feature blocks) ── */
+
+export function InfoList({ children }: { children: ReactNode }) {
+  return (
+    <div className="my-8 not-prose space-y-6">
+      {children}
+    </div>
+  );
+}
+
+export function InfoItem({
+  title,
+  description,
+}: {
+  title: string;
+  description: string;
+  icon?: ReactNode;
+}) {
+  return (
+    <section className="border-l-2 border-brand-400 dark:border-brand-500 pl-4">
+      <h3 className="text-fg font-semibold text-[1rem] font-sans tracking-tight m-0 mb-1.5">
+        {title}
+      </h3>
+      <p className="text-[0.875rem] leading-relaxed m-0" style={{ color: 'var(--card-desc-color)' }}>
+        {description}
+      </p>
+    </section>
   );
 }
 

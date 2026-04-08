@@ -1,7 +1,7 @@
 import {
   Callout,
-  CardGrid,
-  FeatureCard,
+  InfoList,
+  InfoItem,
   ImageZone,
 } from "@/components/DocComponents";
 import { PageNav } from "@/components/PageNav";
@@ -39,38 +39,38 @@ export default function VaultPage() {
         browse, filter, and save at any time.
       </p>
 
-      <CardGrid>
-        <FeatureCard
+      <InfoList>
+        <InfoItem
           icon={<Sparkles className="w-5 h-5" />}
           title="Hooks"
           description="Opening lines and attention-grabbers that stop the scroll in the first 3 seconds."
         />
-        <FeatureCard
+        <InfoItem
           icon={<Type className="w-5 h-5" />}
           title="Titles"
           description="Headline formulas and title patterns that drive clicks and curiosity."
         />
-        <FeatureCard
+        <InfoItem
           icon={<MessageSquareQuote className="w-5 h-5" />}
           title="Captions"
           description="Caption styles and CTA patterns that boost engagement and shares."
         />
-        <FeatureCard
+        <InfoItem
           icon={<AlignLeft className="w-5 h-5" />}
           title="Structures"
           description="Video outlines and narrative arcs — the skeleton behind high-retention content."
         />
-        <FeatureCard
+        <InfoItem
           icon={<Palette className="w-5 h-5" />}
           title="Styles"
           description="Tonal and visual approaches — from storytelling to listicles, cinematic to raw."
         />
-        <FeatureCard
+        <InfoItem
           icon={<LayoutGrid className="w-5 h-5" />}
           title="Frameworks"
           description="Repeatable content formulas you can adapt to any topic or niche."
         />
-      </CardGrid>
+      </InfoList>
 
       <h2>How items get added</h2>
       <p>

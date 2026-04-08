@@ -4,8 +4,8 @@ import {
   ImageZone,
   Steps,
   Step,
-  CardGrid,
-  FeatureCard,
+  InfoList,
+  InfoItem,
 } from "@/components/DocComponents";
 import { PageNav } from "@/components/PageNav";
 import { FileText, Video, Clapperboard } from "lucide-react";
@@ -33,23 +33,23 @@ export default function ScriptsPage() {
         up during onboarding. Pick the format that fits your content goal.
       </p>
 
-      <CardGrid>
-        <FeatureCard
+      <InfoList>
+        <InfoItem
           icon={<FileText className="w-5 h-5" />}
           title="Research Report"
           description="A structured deep-dive into any topic — perfect for building authority or repurposing into multiple pieces of content."
         />
-        <FeatureCard
+        <InfoItem
           icon={<Video className="w-5 h-5" />}
           title="YouTube Script"
           description="A full-length video script with hook, body, and CTA — optimized for retention and watch time."
         />
-        <FeatureCard
+        <InfoItem
           icon={<Clapperboard className="w-5 h-5" />}
           title="Short-form Script"
           description="A punchy script for Reels, TikTok, or Shorts — designed to grab attention in under 60 seconds."
         />
-      </CardGrid>
+      </InfoList>
 
       <h2>How to generate a script</h2>
 

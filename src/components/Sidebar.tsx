@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
@@ -20,6 +20,20 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
     if (initial.size === 0) initial.add("getting-started");
     return initial;
   });
+
+  useEffect(() => {
+    for (const s of sections) {
+      if (s.pages.some((p) => pathname === `/${s.id}/${p.slug}`)) {
+        setExpanded((prev) => {
+          if (prev.has(s.id)) return prev;
+          const next = new Set(prev);
+          next.add(s.id);
+          return next;
+        });
+        break;
+      }
+    }
+  }, [pathname]);
 
   const toggle = (id: string) => {
     setExpanded((prev) => {
@@ -83,7 +97,7 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
             </button>
 
             {isExpanded && (
-              <div className="ml-[1.125rem] pl-3 border-l border-border dark:border-[#27272A] space-y-0.5 mt-0.5 mb-2">
+              <div className="ml-4.5 pl-3 border-l border-border dark:border-[#27272A] space-y-0.5 mt-0.5 mb-2">
                 {section.pages.map((page) => {
                   const href = `/${section.id}/${page.slug}`;
                   const isActive = pathname === href;
